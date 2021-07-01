@@ -33,7 +33,7 @@
             <div class="navbar-nav">
               {% if current_user.is_authenticated %}
                 <a class="nav-item nav-link" href="{{ url_for('new_post') }}">新規投稿</a>
-                <a class="nav-item nav-link" href="{{ url_for('account') }}">user情報</a>
+                <a class="nav-item nav-link" href="{{ url_for('account') }}">ユーザー情報</a>
                 <a class="nav-item nav-link" href="{{ url_for('logout') }}">ログアウト</a>
               {% else %}
                 <a class="nav-item nav-link" href="{{ url_for('login') }}">ログイン</a>
