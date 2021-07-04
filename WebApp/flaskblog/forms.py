@@ -9,10 +9,10 @@ from flaskblog.models import User
 class RegistrationForm(FlaskForm):
     username = StringField('ユーザーネーム',
                            validators=[DataRequired(), Length(min=2, max=20)])
-    email = StringField('Email',
+    email = StringField('メールアドレス',
                         validators=[DataRequired(), Email()])
     password = PasswordField('パスワード', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password',
+    confirm_password = PasswordField('パスワードの確認',
                                      validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('新規登録')
 
@@ -24,7 +24,7 @@ class RegistrationForm(FlaskForm):
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
-            raise ValidationError('That email is taken. Please choose a different one.')
+            raise ValidationError('このメールアドレスは既に使われています。')
 
 
 class LoginForm(FlaskForm):
